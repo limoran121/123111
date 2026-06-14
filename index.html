@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>只给你的今日小店</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#menu" aria-label="回到点单区">
+        <span class="brand-mark">甜</span>
+        <span>只给你的今日小店</span>
+      </a>
+      <nav class="nav">
+        <a href="#menu">菜单</a>
+        <a href="#checkout">下单</a>
+        <a href="#orders">订单</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-photo" src="./assets/hero.png" alt="桌面上的甜品、饮品和一束小花">
+        <div class="hero-content">
+          <p class="eyebrow">今天也想好好照顾你</p>
+          <h1 id="hero-title">想吃什么，点一下就送到你身边</h1>
+          <p class="hero-copy">甜品、奶茶、小花和一句专属备注，都可以一起下单。提交后会生成一张小订单，方便我照着准备。</p>
+          <a class="hero-action" href="#menu">开始点单</a>
+        </div>
+      </section>
+
+      <section class="shop-strip" aria-label="店铺信息">
+        <div>
+          <strong>今日营业</strong>
+          <span>18:00 - 23:30</span>
+        </div>
+        <div>
+          <strong>配送范围</strong>
+          <span>只送给你</span>
+        </div>
+        <div>
+          <strong>隐藏福利</strong>
+          <span>备注写想见我，自动加急</span>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">MENU</p>
+            <h2>今晚想要哪一种开心</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="商品分类">
+            <button class="filter active" type="button" data-filter="all">全部</button>
+            <button class="filter" type="button" data-filter="sweet">甜品</button>
+            <button class="filter" type="button" data-filter="drink">饮品</button>
+            <button class="filter" type="button" data-filter="gift">小惊喜</button>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section id="checkout" class="checkout-layout">
+        <div class="cart-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">CART</p>
+              <h2>购物车</h2>
+            </div>
+            <button class="text-button" type="button" id="clearCart">清空</button>
+          </div>
+          <div class="cart-list" id="cartList"></div>
+          <div class="totals">
+            <div><span>商品小计</span><strong id="subtotal">¥0.00</strong></div>
+            <div><span>甜蜜配送</span><strong id="deliveryFee">¥0.00</strong></div>
+            <div class="total-line"><span>合计</span><strong id="grandTotal">¥0.00</strong></div>
+          </div>
+        </div>
+
+        <form class="order-form" id="orderForm">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">ORDER</p>
+              <h2>填写订单</h2>
+            </div>
+          </div>
+
+          <label>
+            <span>怎么称呼你</span>
+            <input name="name" type="text" placeholder="比如：宝贝 / 小朋友" required>
+          </label>
+          <label>
+            <span>送到哪里</span>
+            <input name="address" type="text" placeholder="楼栋、房间号或约定地点" required>
+          </label>
+          <label>
+            <span>什么时候送</span>
+            <select name="time">
+              <option>现在就想要</option>
+              <option>晚饭后</option>
+              <option>睡前小点心</option>
+              <option>明天给我一个惊喜</option>
+            </select>
+          </label>
+          <label>
+            <span>专属备注</span>
+            <textarea name="note" rows="4" placeholder="比如：少冰、要草莓、想听一句晚安"></textarea>
+          </label>
+
+          <button class="submit-button" type="submit">生成我的订单</button>
+          <p class="form-note">这是给你们两个人用的下单页，不会真的付款；订单会保存在这台设备浏览器里。</p>
+        </form>
+      </section>
+
+      <section id="orders" class="orders-section">
+        <div class="section-head compact">
+          <div>
+            <p class="eyebrow">ORDERS</p>
+            <h2>订单记录</h2>
+          </div>
+        </div>
+        <div class="orders-list" id="ordersList"></div>
+      </section>
+    </main>
+
+    <aside class="floating-cart" id="floatingCart" aria-live="polite">
+      <span id="floatingCount">0 件</span>
+      <strong id="floatingTotal">¥0.00</strong>
+      <a href="#checkout">去下单</a>
+    </aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
